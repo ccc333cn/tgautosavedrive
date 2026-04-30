@@ -1,0 +1,14 @@
+services:
+  tgautosavedrive:
+    image: ccc333i/tgautosavedrive:latest
+    container_name: tgautosavedrive
+    restart: unless-stopped
+    ports:
+      - "39977:39977"
+    volumes:
+      - ./data:/data
+    environment:
+      - DATABASE_URL=sqlite:////data/db/app.db
+      - DATA_DIR=/data
+      - PORT=39977
+      - TZ=Asia/Shanghai
