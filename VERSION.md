@@ -1,13 +1,23 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.13`
+当前版本：`v0.0.14`
 
-发布日期：2026-04-30
+发布日期：2026-05-04
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.13`
+- `ccc333i/tgautosavedrive:v0.0.14`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.14 — 2026-05-04
+
+### 修复内容
+
+- 修复代理设置无法保存的问题（saveSettings 遗漏代理字段）。
+- 修复代理设置保存后刷新页面不回显的问题（loadSettings 遗漏代理字段）。
+- 修复资源搜索、缓存扫描、图片代理、TG Bot 推送不走代理的问题，所有 Telegram 相关 HTTP 请求现在统一使用代理配置。
 
 ---
 
