@@ -1,13 +1,25 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.14`
+当前版本：`v0.0.15`
 
-发布日期：2026-05-04
+发布日期：2026-05-07
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.14`
+- `ccc333i/tgautosavedrive:v0.0.15`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.15 — 2026-05-07
+
+### 新增内容
+
+- SmartStrm 任务名映射改为动态列表，新增「动漫」内置类型，支持自定义新增/删除任意类型映射。
+
+### 修复内容
+
+- 修复 Telegram API 发送验证码超时无响应的问题（MTProto 连接未走代理）。
 
 ---
 
