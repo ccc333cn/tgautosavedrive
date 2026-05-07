@@ -11,7 +11,7 @@
 
 **适用于 115 网盘且无影巢账号的用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.15-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.16-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -163,6 +163,19 @@ docker run -d \
 
 - 电视剧/综艺：自动创建 `剧名(年份)/季文件夹`，持续追更直到完结
 - 电影：直接放在 `片名(年份)` 目录下，一次性转存后自动标记完成
+
+### 订阅功能
+
+在豆瓣榜单浏览影视时，如果频道暂无对应资源，可以点击「订阅」：
+
+1. **创建订阅**：在豆瓣详情页点击「订阅」，选择转存目录和画质要求
+2. **自动检查**：系统按全局 Cron 定时检索所有频道（在追更任务之后执行）
+3. **自动执行**：
+   - 电影 → 自动一次性转存到指定目录
+   - 剧集 → 自动创建追更任务，持续追更
+4. **精准匹配**：标题严格匹配，支持指定季数和最低画质（1080p/4K），避免误转存
+
+订阅默认 90 天无匹配自动过期，也可以手动创建订阅任务。
 
 <div align="right">
 
