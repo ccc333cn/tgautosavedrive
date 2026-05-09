@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 <div align="center">
 
-<img src="frontend/logo.png" width="128" height="128" style="border-radius:24px">
+<img src="img/icon.png" width="128" height="128" style="border-radius:24px">
 
 # TGAutoSaveDrive
 
