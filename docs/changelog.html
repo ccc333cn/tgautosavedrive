@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>更新日志 | TG追更助手</title>
+<meta name="description" content="TG追更助手 (TGAutoSaveDrive) 更新日志 — 查看每个版本的新功能、修复和改进。">
+<meta property="og:title" content="更新日志 | TG追更助手">
+<meta property="og:description" content="TG追更助手更新日志，记录每个版本的新功能和修复。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ccc333cn.github.io/tgautosavedrive/changelog">
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080d1a;--bg2:#0d1628;--bg3:#111d35;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --primary:#6366f1;--primary-glow:rgba(99,102,241,.15);
+  --success:#10b981;--warning:#f59e0b;--danger:#ef4444;--info:#38bdf8;
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.12);
+  --card:rgba(255,255,255,.04);--card-hover:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* Header */
+.header{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:860px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-icon{width:32px;height:32px;border-radius:8px;object-fit:cover}
+.logo-text{font-size:16px;font-weight:600;letter-spacing:-.02em}
+.logo-sep{color:var(--text3);font-weight:300;font-size:18px}
+.logo-page{color:var(--text2);font-size:14px;font-weight:500}
+.header-links{margin-left:auto;display:flex;gap:12px;align-items:center}
+.header-link{color:var(--text3);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:8px;transition:all .2s}
+.header-link:hover{color:var(--text);background:var(--card-hover)}
+.header-link svg{width:16px;height:16px;vertical-align:middle;margin-right:4px}
+
+/* Main */
+.main{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+.page-title{font-size:32px;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--text),var(--text2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-desc{color:var(--text3);font-size:14px;margin-bottom:40px}
+
+/* Version nav */
+.version-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.version-chip{font-size:12px;font-weight:500;padding:5px 12px;border-radius:999px;text-decoration:none;color:var(--text3);background:var(--card);border:1px solid var(--border);transition:all .2s}
+.version-chip:hover{color:var(--primary);border-color:rgba(99,102,241,.3);background:var(--primary-glow)}
+.version-chip.latest{color:var(--primary);border-color:rgba(99,102,241,.3);background:var(--primary-glow)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary) 0%,var(--border) 50%,transparent 100%)}
+
+.release{position:relative;margin-bottom:40px}
+.release .dot{position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--primary);z-index:1;transition:all .2s}
+.release:first-child .dot{background:var(--primary);box-shadow:0 0 12px rgba(99,102,241,.4)}
+.release-header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.release-version{font-size:20px;font-weight:700;color:var(--text)}
+.release-date{font-size:13px;color:var(--text3);padding:3px 10px;background:var(--card);border-radius:999px;border:1px solid var(--border)}
+.release-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px}
+.tag-latest{background:rgba(99,102,241,.15);color:var(--primary);border:1px solid rgba(99,102,241,.25)}
+.tag-initial{background:rgba(16,185,129,.12);color:var(--success);border:1px solid rgba(16,185,129,.25)}
+
+.release-body{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;transition:border-color .2s}
+.release-body:hover{border-color:var(--border2)}
+.release-desc{color:var(--text2);font-size:14px;margin-bottom:16px;line-height:1.6}
+
+.section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:14px;border-radius:2px}
+.section-title.feat::before{background:var(--success)}
+.section-title.feat{color:var(--success)}
+.section-title.fix::before{background:var(--warning)}
+.section-title.fix{color:var(--warning)}
+.section-title.improve::before{background:var(--info)}
+.section-title.improve{color:var(--info)}
+.section-title.adjust::before{background:var(--text3)}
+.section-title.adjust{color:var(--text3)}
+.section-title.ui::before{background:#c084fc}
+.section-title.ui{color:#c084fc}
+.section-title.core::before{background:var(--primary)}
+.section-title.core{color:var(--primary)}
+.section-title.push::before{background:#f472b6}
+.section-title.push{color:#f472b6}
+.section-title.sys::before{background:var(--text3)}
+.section-title.sys{color:var(--text3)}
+.section-title.stack::before{background:var(--info)}
+.section-title.stack{color:var(--info)}
+
+.change-list{list-style:none;margin:0 0 8px}
+.change-list li{position:relative;padding:6px 0 6px 18px;font-size:13px;color:var(--text2);line-height:1.55}
+.change-list li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:var(--text3)}
+.change-list li code{font-size:12px;padding:1px 6px;background:rgba(99,102,241,.1);color:var(--primary);border-radius:4px;font-family:'SF Mono',Monaco,Consolas,monospace}
+.change-list li strong{color:var(--text);font-weight:500}
+
+/* Footer */
+.footer{max-width:860px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:var(--text3);font-size:12px;flex-wrap:wrap;gap:12px}
+.footer a{color:var(--text3);text-decoration:none;transition:color .2s}
+.footer a:hover{color:var(--primary)}
+
+/* Scroll to top */
+.scroll-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--text3);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:all .3s;z-index:50}
+.scroll-top.visible{opacity:1}
+.scroll-top:hover{color:var(--primary);border-color:rgba(99,102,241,.3);transform:translateY(-2px)}
+
+/* Mobile */
+@media(max-width:640px){
+  .main{padding:32px 16px 60px}
+  .page-title{font-size:24px}
+  .timeline{padding-left:20px}
+  .timeline::before{left:4px}
+  .release .dot{left:-18px;width:10px;height:10px}
+  .release-body{padding:16px}
+  .release-header{gap:8px}
+  .release-version{font-size:17px}
+  .header-links{display:none}
+  .footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="https://github.com/ccc333cn/tgautosavedrive" class="logo" target="_blank">
+      <img class="logo-icon" src="logo.png" alt="TG追更助手">
+      <span class="logo-text">TG追更助手</span>
+    </a>
+    <span class="logo-sep">·</span>
+    <span class="logo-page">更新日志</span>
+    <div class="header-links">
+      <a class="header-link" href="https://github.com/ccc333cn/tgautosavedrive" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+        GitHub
+      </a>
+      <a class="header-link" href="https://hub.docker.com/r/ccc333i/tgautosavedrive" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+        Docker
+      </a>
+      <a class="header-link" href="https://t.me/tgautosavedrive" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <h1 class="page-title">更新日志</h1>
+  <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
+
+  <nav class="version-nav">
+    <a class="version-chip latest" href="#v0.0.20">v0.0.20</a>
+    <a class="version-chip" href="#v0.0.19">v0.0.19</a>
+    <a class="version-chip" href="#v0.0.18">v0.0.18</a>
+    <a class="version-chip" href="#v0.0.17">v0.0.17</a>
+    <a class="version-chip" href="#v0.0.16">v0.0.16</a>
+    <a class="version-chip" href="#v0.0.15">v0.0.15</a>
+    <a class="version-chip" href="#v0.0.14">v0.0.14</a>
+    <a class="version-chip" href="#v0.0.13">v0.0.13</a>
+    <a class="version-chip" href="#v0.0.12">v0.0.12</a>
+    <a class="version-chip" href="#v0.0.11">v0.0.11</a>
+    <a class="version-chip" href="#v0.0.1">v0.0.1</a>
+  </nav>
+
+  <div class="timeline">
+
+    <!-- v0.0.20 -->
+    <article class="release" id="v0.0.20">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.20</span>
+        <span class="release-date">2026-05-22</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>豆瓣榜单 × Emby 媒体库联动：浏览豆瓣榜单时自动标注 Emby 中已有的影片，卡片右下角绿色「已入库」角标，详情弹窗同步显示。</li>
+          <li>Emby 设置新增「媒体库匹配」独立开关，与现有 Emby 扫描通知互不影响，用户可自由启停。</li>
+          <li>Emby 库存标题持久化到 SQLite，启动时从数据库秒加载，转存触发 Emby 扫描后自动刷新，豆瓣页面支持手动刷新按钮。</li>
+          <li>添加频道时支持粘贴完整 Telegram 链接（<code>https://t.me/xxx</code> 或 <code>https://t.me/s/xxx</code>），自动提取频道用户名。</li>
+          <li>Emby 地址未加 <code>http://</code> 前缀时自动补全，避免连接失败。</li>
+        </ul>
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复频道名包含斜杠（如误粘贴完整频道链接）时无法删除的问题。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.19 -->
+    <article class="release" id="v0.0.19">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.19</span>
+        <span class="release-date">2026-05-14</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>订阅新增画质格式过滤：支持指定 HDR 或 DV（杜比视界），精准匹配所需画质版本。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.18 -->
+    <article class="release" id="v0.0.18">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.18</span>
+        <span class="release-date">2026-05-11</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title improve">优化</div>
+        <ul class="change-list">
+          <li>搜索结果实时性：频道缓存增量扫描改为同步执行，首次搜索即可显示频道最新资源。</li>
+        </ul>
+        <div class="section-title ui">界面</div>
+        <ul class="change-list">
+          <li>时间标记设置移至 SmartStrm Webhook 下方，逻辑分组更清晰。</li>
+          <li>时间标记描述增加说明：追更任务完结时会自动删除对应的时间标记文件。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.17 -->
+    <article class="release" id="v0.0.17">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.17</span>
+        <span class="release-date">2026-05-10</span>
+      </div>
+      <div class="release-body">
+        <p class="release-desc">优化订阅任务匹配逻辑，新增完结剧集一次性转存、豆瓣封面搜索和自动季检测。</p>
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>完结剧集一次性转存：带「完结」标签的剧集与电影一样，自动选画质最高版本直接转存。</li>
+          <li>订阅弹窗新增「搜索封面」按钮：手动新建订阅时可一键从豆瓣搜索并填充封面图。</li>
+          <li>追更任务自动获取封面：订阅匹配创建追更任务时，若无封面则自动从豆瓣获取并下载到本地。</li>
+          <li>订阅创建追更任务后自动触发首次追更执行。</li>
+          <li>追更任务显示标题自动从资源解析年份（如「亢奋 (2019)」）。</li>
+        </ul>
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复订阅匹配不过滤年份的问题（同名不同年份资源误匹配）。</li>
+          <li>修复订阅有完结和连载资源时，连载被优先匹配的问题（现在完结版优先）。</li>
+          <li>修复追更任务季过滤逻辑漏洞（未解析出季号的资源不被过滤）。</li>
+          <li>修复订阅未指定季时追更任务不设置季文件夹的问题（现在自动检测最新季）。</li>
+          <li>修复豆瓣详情页点「订阅」时自动填入不准确年份的问题。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.16 -->
+    <article class="release" id="v0.0.16">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.16</span>
+        <span class="release-date">2026-05-08</span>
+      </div>
+      <div class="release-body">
+        <p class="release-desc">新增订阅任务功能，支持从豆瓣一键订阅并自动转存，优化画质选择策略和 UI 体验。</p>
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>订阅任务：支持从豆瓣榜单一键创建订阅，定时自动检索频道资源并转存。</li>
+          <li>电影订阅为一次性转存（直接转入目标目录），剧集/综艺/动漫自动创建追更任务。</li>
+          <li>电影订阅匹配多个结果时，自动选择画质最高的资源（DV HDR10 > DV > HDR10）。</li>
+          <li>订阅任务支持编辑标题、类型、画质、检查频率和过期天数。</li>
+          <li>新增 Telegram 交流群入口。</li>
+          <li>追更任务、订阅任务新增「纪录片」类型。</li>
+          <li>SmartStrm 任务名映射支持逗号分隔多任务名。</li>
+          <li>通知开关勾选/取消后自动保存，无需手动点保存按钮。</li>
+        </ul>
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复今日转存统计在 UTC+8 时区不准的问题。</li>
+          <li>修复 Vue3 模板中下划线前缀变量导致运行时错误。</li>
+          <li>修复频道配置解析不兼容对象数组格式的问题。</li>
+          <li>修复 SmartStrm 启用后无法关闭的问题。</li>
+          <li>修复从搜索结果快速创建追更任务时封面图丢失的问题。</li>
+          <li>修复追更任务转存后未触发 SmartStrm/Emby 通知的问题。</li>
+          <li>修复 Telegram MTProto 不支持 HTTP 代理的问题。</li>
+        </ul>
+        <div class="section-title adjust">调整</div>
+        <ul class="change-list">
+          <li>SmartStrm 映射固定为电影/综艺/动漫/电视剧/纪录片 5 种类型。</li>
+          <li>导航栏重排：订阅任务移至追更任务下方，系统日志移至系统设置上方。</li>
+          <li>转存概览移除「已暂停」统计卡片。</li>
+          <li>「转存日志」更名为「系统日志」。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.15 -->
+    <article class="release" id="v0.0.15">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.15</span>
+        <span class="release-date">2026-05-07</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>SmartStrm 任务名映射改为动态列表，内置电视剧/电影/综艺/动漫四种类型。</li>
+          <li>支持自定义新增/删除 SmartStrm 任务类型映射。</li>
+        </ul>
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复 Telegram API 发送验证码转圈后无响应的问题（MTProto 连接未通过代理）。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.14 -->
+    <article class="release" id="v0.0.14">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.14</span>
+        <span class="release-date">2026-05-04</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复代理设置无法保存的问题（<code>saveSettings</code> 遗漏全部代理字段）。</li>
+          <li>修复代理设置保存后刷新页面不回显的问题。</li>
+          <li>修复资源搜索、缓存扫描、图片代理、TG Bot 推送不走代理的问题。</li>
+        </ul>
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li><code>proxy.NewHTTPClient()</code> 便捷方法，统一创建带代理的 HTTP Client。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.13 -->
+    <article class="release" id="v0.0.13">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.13</span>
+        <span class="release-date">2026-04-30</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>侧边栏左下角新增 GitHub 项目入口。</li>
+          <li>新增 <code>/api/version</code> 版本检测接口，自动读取 Docker Hub 标签。</li>
+          <li>网页左下角新增当前版本展示，有新版本时显示红色标签。</li>
+        </ul>
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复更换浏览器首次打开仍重复出现新手引导的问题。</li>
+          <li>修复基础设置 Cron 表达式触发浏览器保存密码提示。</li>
+          <li>修复敏感输入被浏览器误判为密码的问题。</li>
+          <li>修复刷新页面偶发显示 <code>{{...}}</code> 模板文本的问题。</li>
+        </ul>
+        <div class="section-title adjust">调整</div>
+        <ul class="change-list">
+          <li>iPhone 添加到主屏幕时显示名称改为「TG追更助手」。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.12 -->
+    <article class="release" id="v0.0.12">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.12</span>
+        <span class="release-date">2026-04-30</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复敏感信息显示按钮在深色背景下图标过暗的问题。</li>
+          <li>修复 HTTP 缓存更新后频道管理页数据不准确的问题。</li>
+          <li>修复缓存写入不会同步刷新频道缓存状态的问题。</li>
+        </ul>
+        <div class="section-title adjust">调整</div>
+        <ul class="change-list">
+          <li>Telegram API 模式明确为即时搜索，不再依赖 HTTP 频道缓存。</li>
+          <li>转存概览「下次调度」纳入缓存定时更新。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.11 -->
+    <article class="release" id="v0.0.11">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.11</span>
+        <span class="release-date">2026-04-30</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复未配置 115 Cookie 时进入「网盘管理」会被误判为登录失效的问题。</li>
+          <li>收紧前端自动退出登录判断，仅在系统登录凭证真正失效时退出。</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- v0.0.1 -->
+    <article class="release" id="v0.0.1">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.1</span>
+        <span class="release-date">2026-04-29</span>
+        <span class="release-tag tag-initial">首个版本</span>
+      </div>
+      <div class="release-body">
+        <p class="release-desc">首个完整版本，Go 重构全部功能实现。</p>
+        <div class="section-title core">核心功能</div>
+        <ul class="change-list">
+          <li><strong>Telegram 频道搜索</strong> — HTTP 抓取 + MTProto 双模式，多频道并行搜索</li>
+          <li><strong>115 网盘集成</strong> — TLS 指纹绕过 WAF，扫码登录，文件浏览/转存/云下载</li>
+          <li><strong>自动追更</strong> — Cron 定时任务，按剧名/季自动整理目录，三重去重</li>
+          <li><strong>智能解析</strong> — Case A/B/C/D 四种频道格式，自动提取元数据</li>
+        </ul>
+        <div class="section-title push">联动推送</div>
+        <ul class="change-list">
+          <li><strong>SmartStrm</strong> — 转存后触发 Webhook 生成 STRM 文件</li>
+          <li><strong>Emby</strong> — SmartStrm 通知后延时触发媒体库扫描</li>
+          <li><strong>通知</strong> — PushPlus 微信 + Telegram Bot 双通道，30s 防抖合并推送</li>
+        </ul>
+        <div class="section-title ui">前端</div>
+        <ul class="change-list">
+          <li>Vue 3 单文件 SPA，Obsidian Dark 主题，9 个导航页</li>
+          <li>Lucide Icons 全量 SVG 图标系统</li>
+          <li>仪表盘、资源搜索、网盘浏览器、频道管理、豆瓣榜单等</li>
+        </ul>
+        <div class="section-title sys">系统</div>
+        <ul class="change-list">
+          <li>数据备份恢复、日志自动清理、缓存自动刷新</li>
+          <li>Bearer Token 认证、PWA 支持</li>
+        </ul>
+        <div class="section-title stack">技术栈</div>
+        <ul class="change-list">
+          <li>Go 1.25 · Gin · gocron/v2 · GORM + SQLite（modernc，无 CGO）</li>
+          <li>Vue 3 CDN · Lucide Icons · embed.FS</li>
+          <li>Docker Alpine 单容器 · 端口 39977</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <span>© 2026 TG追更助手 (TGAutoSaveDrive)</span>
+  <div>
+    <a href="https://github.com/ccc333cn/tgautosavedrive" target="_blank">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://hub.docker.com/r/ccc333i/tgautosavedrive" target="_blank">Docker Hub</a>
+    &nbsp;·&nbsp;
+    <a href="https://t.me/tgautosavedrive" target="_blank">Telegram</a>
+  </div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('.scroll-top').classList.toggle('visible',window.scrollY>300)
+})
+</script>
+</body>
+</html>
