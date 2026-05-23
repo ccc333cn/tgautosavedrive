@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.20">v0.0.20</a>
+    <a class="version-chip latest" href="#v0.0.21">v0.0.21</a>
+    <a class="version-chip" href="#v0.0.20">v0.0.20</a>
     <a class="version-chip" href="#v0.0.19">v0.0.19</a>
     <a class="version-chip" href="#v0.0.18">v0.0.18</a>
     <a class="version-chip" href="#v0.0.17">v0.0.17</a>
@@ -165,13 +166,39 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.21 -->
+    <article class="release" id="v0.0.21">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.21</span>
+        <span class="release-date">2026-05-24</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复首次启用 Emby 媒体库匹配时豆瓣榜单无 Emby 刷新按钮和已入库标注的问题。</li>
+          <li>修复订阅电影（一次性转存）完成后未触发 SmartStrm Webhook 和 Emby 媒体库扫描通知。</li>
+          <li>消除追更任务去重查询产生的 GORM <code>record not found</code> 日志噪音。</li>
+        </ul>
+        <div class="section-title improve">优化</div>
+        <ul class="change-list">
+          <li>移动端近 7 天趋势图日期标签改为只显示日数，避免文字重叠。</li>
+          <li>移动端豆瓣影片详情页操作按钮自动换行，不再溢出被截断。</li>
+          <li>追更任务卡片和批量操作按钮的 emoji 字符全部替换为 Lucide SVG 图标。</li>
+          <li>通知消息中剧集按集数排序显示（S01E01 → S01E02 → ...）。</li>
+          <li>转存概览「订阅中」统计卡片补充紫色底部彩条。</li>
+          <li>更新内容弹窗「知道了」按钮居中对齐。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.20 -->
     <article class="release" id="v0.0.20">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.20</span>
         <span class="release-date">2026-05-22</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
