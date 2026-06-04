@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.22">v0.0.22</a>
+    <a class="version-chip latest" href="#v0.0.23">v0.0.23</a>
+    <a class="version-chip" href="#v0.0.22">v0.0.22</a>
     <a class="version-chip" href="#v0.0.21">v0.0.21</a>
     <a class="version-chip" href="#v0.0.20">v0.0.20</a>
     <a class="version-chip" href="#v0.0.19">v0.0.19</a>
@@ -167,13 +168,31 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.23 -->
+    <article class="release" id="v0.0.23">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.23</span>
+        <span class="release-date">2026-06-04</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>115 Cookie 失效时追更任务未推送通知（PushPlus / TG Bot）的问题。</li>
+          <li>Cookie 失效导致任务被标记为异常后不再自动执行的问题（任务保持活跃，等待下次 Cron 重试）。</li>
+          <li>订阅电影转存时 Cookie 失效同样未推送通知的问题。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.22 -->
     <article class="release" id="v0.0.22">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.22</span>
         <span class="release-date">2026-06-02</span>
-        <span class="release-tag tag-latest">Latest</span>
+
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
