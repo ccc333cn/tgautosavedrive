@@ -5,13 +5,13 @@
 
 # TGAutoSaveDrive
 
-**Telegram 频道 115 网盘追更转存系统**
+**Telegram 频道 115 / 123 网盘追更转存系统**
 
 自动监控 TG 频道资源 → 智能解析 → 一键转存 → 定时追更
 
-**适用于 115 网盘且无影巢账号的用户**
+**适用于 115 网盘和 123 云盘用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.23-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.24-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -42,12 +42,15 @@
 基于 **Cron** 的定时任务系统，支持电视剧持续追更、电影一次性转存。内置电影/综艺/动漫/电视剧/纪录片 5 种类型。按剧名/季自动创建文件夹结构，智能去重（分享码 + 集信息 + 文件名三重校验），超期无新资源自动完结。
 
 ### 🎯 智能解析
-内置消息解析逻辑，主要按作者个人使用场景优化，重点适配 [**gimy115** 剧迷热更频道](https://t.me/s/gimy115) 和 [**QukanMovie** 115 影视资源分享频道](https://t.me/s/QukanMovie) 的格式。感谢两位频道主的免费资源分享！可自动提取剧名、年份、季集、画质、文件大小等元数据，并按画质排序保留候选资源。
+内置消息解析逻辑，主要按作者个人使用场景优化，重点适配 [**gimy115** 剧迷热更频道](https://t.me/s/gimy115)、[**QukanMovie** 115 影视资源分享频道](https://t.me/s/QukanMovie) 和 [**regeng123** 123 网盘热更频道](https://t.me/s/regeng123) 的格式。感谢频道主的免费资源分享！可自动提取剧名、年份、季集、画质、文件大小等元数据，并按画质排序保留候选资源。
 
 > ⚠️ 本项目不会适配 `yingshiziyuanpindao`（星河频道）的消息格式，原因请自行了解。其他未适配频道的消息格式可能无法完整识别。
 
 ### 🔐 115 网盘深度集成
 支持扫码登录、文件浏览、目录管理、分享转存、离线下载全功能。
+
+### ☁️ 123 云盘支持
+支持 123 云盘网盘管理、资源转存、追更任务全链路。仅适配 [@regeng123](https://t.me/s/regeng123) 频道资源格式。
 
 ### 🔔 多渠道通知
 转存成功后自动推送通知，支持 **PushPlus 微信** 和 **Telegram Bot** 双通道。30 秒防抖合并，多任务同时完成只发一条消息。
