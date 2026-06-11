@@ -1,13 +1,23 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.24`
+当前版本：`v0.0.25`
 
-发布日期：2026-06-11
+发布日期：2026-06-12
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.24`
+- `ccc333i/tgautosavedrive:v0.0.25`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.25 — 2026-06-12
+
+### 修复
+
+- 修复 123 云盘 token 堆积超限问题：token 持久化到 SQLite，容器重启不再重复申请新 token。
+- 修复编辑 123 网盘追更任务时标签错显为「115 网盘目标目录」的问题。
+- 优化 401 重试逻辑：先清空失效 token 再重新登录，避免并发调度产生多余 token。
 
 ---
 
