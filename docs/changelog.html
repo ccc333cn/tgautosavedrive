@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.25">v0.0.25</a>
+    <a class="version-chip latest" href="#v0.0.26">v0.0.26</a>
+    <a class="version-chip" href="#v0.0.25">v0.0.25</a>
     <a class="version-chip" href="#v0.0.24">v0.0.24</a>
     <a class="version-chip" href="#v0.0.23">v0.0.23</a>
     <a class="version-chip" href="#v0.0.22">v0.0.22</a>
@@ -170,13 +171,38 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.26 -->
+    <article class="release" id="v0.0.26">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.26</span>
+        <span class="release-date">2026-06-13</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>修复 123 云盘 Token 管理架构：全局单例 + DBTokenStore 持久化，避免多任务并发产生多余 token。</li>
+          <li>修复凭据变更后旧 token 未清除的问题，更换 123 账号后自动重置。</li>
+          <li>修复手动粘贴 123 分享链接无法预览文件列表的问题。</li>
+          <li>修复 123 网盘文件列表超过 100 项只返回首页的问题（lastFileId 游标自动翻页）。</li>
+          <li>修复搜索中文文件名时 URL 编码异常的问题。</li>
+          <li>修复订阅扫描漏掉 123 链接的问题（link fallback 同时支持 115/123）。</li>
+          <li>修复 115 和 123 转存目录记忆互相覆盖的问题（按 provider 分离）。</li>
+          <li>修复 123 追更季文件夹重复创建报错的问题（改用 FindOrCreateFolder）。</li>
+          <li>新增 123 追更转存前网盘文件名去重，避免重复转存相同文件。</li>
+          <li>修复全局锁内执行网络请求可能阻塞其他调用的问题。</li>
+          <li>云下载标题添加"仅 115 网盘"标签提示。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.25 -->
     <article class="release" id="v0.0.25">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.25</span>
         <span class="release-date">2026-06-12</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title fix">修复</div>
