@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.26">v0.0.26</a>
+    <a class="version-chip latest" href="#v0.0.27">v0.0.27</a>
+    <a class="version-chip" href="#v0.0.26">v0.0.26</a>
     <a class="version-chip" href="#v0.0.25">v0.0.25</a>
     <a class="version-chip" href="#v0.0.24">v0.0.24</a>
     <a class="version-chip" href="#v0.0.23">v0.0.23</a>
@@ -171,13 +172,37 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.27 -->
+    <article class="release" id="v0.0.27">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.27</span>
+        <span class="release-date">2026-06-18</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title fix">修复</div>
+        <ul class="change-list">
+          <li>收紧 Emby 入库匹配逻辑，减少同名不同作品的误匹配。</li>
+          <li>提升资源搜索封面清晰度（优先使用高分辨率图源）。</li>
+          <li>修复任务创建时网盘类型识别错误的问题。</li>
+          <li>修复手动转存时网盘类型识别错误的问题。</li>
+          <li>修复前端目录记忆未按 provider 分离导致 115/123 互相覆盖的问题。</li>
+          <li>修复订阅弹窗 123 目录未正确初始化的问题。</li>
+          <li>修复 123 云盘季文件夹 FindOrCreate 重复报错的问题。</li>
+          <li>修复 123 云盘转存文件名未去重的问题。</li>
+          <li>修复 123 云盘文件列表分页游标和 URL 编码问题。</li>
+          <li>修复订阅 123 fallback 和目录记忆分离问题。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.26 -->
     <article class="release" id="v0.0.26">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.26</span>
         <span class="release-date">2026-06-13</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title fix">修复</div>
