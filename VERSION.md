@@ -1,13 +1,21 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.28`
+当前版本：`v0.0.29`
 
-发布日期：2026-06-19
+发布日期：2026-08-03
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.28`
+- `ccc333i/tgautosavedrive:v0.0.29`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.29 — 2026-08-03
+
+### 新增
+
+- 新增 123 云盘扫码登录功能。
 
 ---
 
