@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.29">v0.0.29</a>
+    <a class="version-chip latest" href="#v0.0.30">v0.0.30</a>
+    <a class="version-chip" href="#v0.0.29">v0.0.29</a>
     <a class="version-chip" href="#v0.0.28">v0.0.28</a>
     <a class="version-chip" href="#v0.0.27">v0.0.27</a>
     <a class="version-chip" href="#v0.0.26">v0.0.26</a>
@@ -174,13 +175,37 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.30 -->
+    <article class="release" id="v0.0.30">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.30</span>
+        <span class="release-date">2026-09-04</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>新增适配 @regeng115、@gimy100 的 115 ED2K 视频链接与 Telegraph 清单，支持搜索、缓存、追更和订阅。</li>
+          <li>新增云下载任务进度、失败提醒和手动重试；电影单文件也自动创建影片目录，下载完成后移动并验证归档。</li>
+          <li>只有归档成功才发送成功通知和联动 SmartStrm / Emby；剧集追更按原有开关、目录及模板规则先更新时间标记。</li>
+          <li>升级后请在 Web 点击按钮完整补扫频道缓存一次；保留旧缓存并支持断点继续，不会打开网页就自动补扫或下载。</li>
+        </ul>
+        <div class="section-title fix">修复与调整</div>
+        <ul class="change-list">
+          <li>公告已读状态保存到服务器，修复更换浏览器重复提醒，以及引导已读保存失败无提示的问题。</li>
+          <li>完善视频与字幕区分、季集和 TMDB 元数据解析；避免下载或移动未完成时提前通知、更新时间标记或扫库。</li>
+          <li>README 更新频道和 ED2K 使用说明，移除已转收费的 @gimy115 推荐及页面示例；保留用户已有配置、任务和缓存。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.29 -->
     <article class="release" id="v0.0.29">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.29</span>
         <span class="release-date">2026-08-03</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
