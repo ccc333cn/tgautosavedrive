@@ -11,7 +11,7 @@
 
 **适用于 115 网盘和 123 云盘用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.30-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.31-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -185,16 +185,20 @@ docker run -d \
 - 电视剧/综艺：自动创建 `剧名(年份)/季文件夹`，持续追更直到完结
 - 电影：直接放在 `片名(年份)` 目录下，一次性转存后自动标记完成
 
-### v0.0.30 升级与 ED2K 使用说明
+### v0.0.31 升级与 ED2K 使用说明
 
 1. 升级前备份数据目录。升级后登录 Web，在「频道 & 账号」添加 `regeng115`、`gimy100`，网盘类型选 115。
-2. 按升级提示点击「开始全量补扫」，完整补扫所有已配置频道一次，让旧缓存补齐 ED2K 资源。频道缓存扫描本身不触发下载、通知或媒体库扫描。
+2. 若尚未完成 v0.0.30 的 ED2K 缓存升级，按提示点击「开始全量补扫」，完整补扫所有已配置频道一次。已完成补扫的用户无需为 v0.0.31 重扫。频道缓存扫描本身不触发下载、通知或媒体库扫描。
 3. **不会在打开网页时自动启动补扫**。可选择「稍后处理」；中断后点击「继续全量补扫」，沿已保存断点继续。旧缓存保留，日常增量更新继续运行。
 4. 从搜索结果转存，或创建追更/订阅任务后，在「转存记录 → 云下载任务」查看进度。ED2K 是逐文件任务，电影即使只有一个文件也会自动创建影片目录。
-5. 下载失败需手动重试；已下载但移动失败时只重试归档，不重新下载。失败或等待中的视频不会触发时间标记和扫库。
+5. 普通下载失败后依次等待 **1、6、24 小时**重新添加，最多自动重建 **3 次**；连续 **24 小时无进展**也会触发重建，有进展则重新计时。账号、空间、配额等限制暂停并提醒，处理后手动重试。页面显示次数、下次时间，并提供「立即重新添加」「停止自动处理」。旧版已停止的失败任务可手动重新添加。
 6. 时间标记沿用原有开关、目录规则和根目录 `时间标记.txt` 模板；一次性转存不创建追更时间标记。模板缺失等错误单独记录，不回滚已归档视频。
 
-提交超时等结果不明确的情况会先核实，超过 10 分钟仍找不到下载任务时提醒人工处理。已有相同云下载任务不会被自动接管；停止自动归档不会删除远端任务或文件。
+自动重建仅删除本系统对应的下载记录，**不删除网盘文件**。删除前重新确认下载状态，确认记录消失后才重新添加原 ED2K 链接。下载完成、存入网盘或归档中的任务不重建；已下载但移动失败时只重试归档。归档按文件 ID、类型及所在目录确认，不用文件名或显示大小拦截；目录同步延迟可自动复查 15 分钟。
+
+提交、删除超时等结果不明确的情况先核实，超过 10 分钟仍无法确认时提示人工处理，不盲目重复请求。已有相同云下载任务不会被自动接管；停止自动处理不会删除远端任务或文件。失败、等待或重新添加中的视频不会触发时间标记、成功通知及扫库。
+
+追更封面保存到本地 `/data/covers`，旧任务缺失封面按需补存，降低豆瓣签名链接过期的影响。升级时务必保留 `/data` 挂载；原图片已失效且无法找到替代图时仍可能暂时无封面。
 
 > 原有「链接转存」页面的通用云下载工具仍为直接提交入口，不包含上述受管任务的自动归档、失败跟踪和联动。请通过搜索、追更或订阅使用本次新增流程。
 

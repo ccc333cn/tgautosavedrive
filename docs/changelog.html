@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.30">v0.0.30</a>
+    <a class="version-chip latest" href="#v0.0.31">v0.0.31</a>
+    <a class="version-chip" href="#v0.0.30">v0.0.30</a>
     <a class="version-chip" href="#v0.0.29">v0.0.29</a>
     <a class="version-chip" href="#v0.0.28">v0.0.28</a>
     <a class="version-chip" href="#v0.0.27">v0.0.27</a>
@@ -175,13 +176,37 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.31 -->
+    <article class="release" id="v0.0.31">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.31</span>
+        <span class="release-date">2026-09-07</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>ED2K 下载失败后依次等待 1、6、24 小时自动重新添加，最多自动重建 3 次；连续 24 小时无进展也触发重建，持续有进度不按总时长重建。</li>
+          <li>显示重建次数与下次时间，支持立即重新添加、停止自动处理；状态持久化，账号、空间或配额限制暂停并提醒。</li>
+          <li>只删除本系统对应的下载记录，不删除网盘文件；删除前复查完成状态，确认记录消失后再提交原链接，超时先核实。</li>
+          <li>追更封面保存到本地，旧任务缺失封面按需补存。升级请保留 /data 挂载及其中的 covers 目录。</li>
+        </ul>
+        <div class="section-title fix">修复与调整</div>
+        <ul class="change-list">
+          <li>ED2K 资源只显示 ED2K 链接按钮，点击复制；推送补齐影片、季集、画质、体积和目录，不显示 CID，恢复后抑制过期失败通知。</li>
+          <li>归档按唯一文件 ID、类型及所在目录确认，不再用文件名或显示大小误判；目录可见性延迟支持 15 分钟复查。</li>
+          <li>下载完成、存入网盘和归档阶段不重建；只有归档成功才触发追更时间标记、成功通知及 SmartStrm / Emby 联动。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.30 -->
     <article class="release" id="v0.0.30">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.30</span>
         <span class="release-date">2026-09-04</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
