@@ -11,7 +11,7 @@
 
 **适用于 115 网盘和 123 云盘用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.31-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.32-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -76,7 +76,7 @@
 ### 🎬 影视联动
 - **SmartStrm**：转存后触发 Webhook，自动生成 STRM 文件。支持电影/综艺/动漫/电视剧/纪录片 5 种类型映射，每种类型可配置多个任务名（逗号分隔）
 - **Emby**：SmartStrm 通知后延时触发媒体库扫描，资源即存即看
-- **豆瓣榜单**：浏览热门新片，一键搜索转存
+- **热门榜单**：豆瓣、TMDB 两个独立页签，默认豆瓣；TMDB 支持电影/剧集的今日趋势、本周趋势、热门和高分，自动展示前 50 部，可继续加载更多
 
 <div align="right">
 
@@ -185,10 +185,20 @@ docker run -d \
 - 电视剧/综艺：自动创建 `剧名(年份)/季文件夹`，持续追更直到完结
 - 电影：直接放在 `片名(年份)` 目录下，一次性转存后自动标记完成
 
-### v0.0.31 升级与 ED2K 使用说明
+### v0.0.32 热门榜单使用说明
+
+1. 从侧栏「热门榜单」进入，默认显示豆瓣，可切换至 TMDB；本版本不开放 Netflix 榜单。
+2. TMDB 需要在「TMDB 配置」填写 [API Read Access Token](https://www.themoviedb.org/settings/api)（读取访问令牌，不是 v3 API Key）。令牌仅保存在服务端；豆瓣榜单不依赖此配置。网络不通时可使用系统设置中的代理。
+3. 选择电影或剧集，以及今日趋势、本周趋势、热门或高分。默认分批补齐前 50 部，第一批先展示，不足时展示全部；点击「加载更多」每次追加 20 部，保持原榜单顺序并去重，海报懒加载。
+4. 点击作品查看中文资料、搜索资源、订阅或创建追更。TMDB 暂无中文译名时保留其现有名称；剧集需确认具体季数，创建任务仍需选择频道与目标目录并提交。只浏览榜单不会执行下载或扫库。
+5. 列表/搜索缓存有效期 1 小时，详情 24 小时，刷新优先复用有效缓存；上游异常时可展示上次成功数据并提示。海报会保存到 `/data/covers/tmdb`，当前不自动清理；创建追更后仍使用任务本地封面。切换分类重置分页，后续页失败保留已显示内容，可重试。
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+### 升级与 ED2K 使用说明
 
 1. 升级前备份数据目录。升级后登录 Web，在「频道 & 账号」添加 `regeng115`、`gimy100`，网盘类型选 115。
-2. 若尚未完成 v0.0.30 的 ED2K 缓存升级，按提示点击「开始全量补扫」，完整补扫所有已配置频道一次。已完成补扫的用户无需为 v0.0.31 重扫。频道缓存扫描本身不触发下载、通知或媒体库扫描。
+2. 若尚未完成 v0.0.30 的 ED2K 缓存升级，按提示点击「开始全量补扫」，完整补扫所有已配置频道一次。已完成补扫的用户无需为 v0.0.32 重扫。频道缓存扫描本身不触发下载、通知或媒体库扫描。
 3. **不会在打开网页时自动启动补扫**。可选择「稍后处理」；中断后点击「继续全量补扫」，沿已保存断点继续。旧缓存保留，日常增量更新继续运行。
 4. 从搜索结果转存，或创建追更/订阅任务后，在「转存记录 → 云下载任务」查看进度。ED2K 是逐文件任务，电影即使只有一个文件也会自动创建影片目录。
 5. **不必等待115判定失败**：首次添加 **1小时**仍未完成即重新添加；第一次重新添加后 **6小时**仍未完成再次重建；第二次重新添加后 **24小时**仍未完成第三次重建。每轮从该次添加起计时，即使有进度也不延长期限。最多自动重建 **3次**，最后一轮再等 **24小时**仍未完成则暂停并通知。实际操作在到期后的调度检查中执行。账号、空间、配额等限制暂停并提醒，处理后手动重试。页面显示次数、到期时间，并提供「立即重新添加」「停止自动处理」。旧版等待中的任务按本轮添加时间重新计算；已停止的失败任务可手动重新添加。
@@ -206,9 +216,9 @@ docker run -d \
 
 ### 订阅功能
 
-在豆瓣榜单浏览影视时，如果频道暂无对应资源，可以点击「订阅」：
+在豆瓣或 TMDB 榜单浏览影视时，如果频道暂无对应资源，可以点击「订阅」：
 
-1. **创建订阅**：在豆瓣详情页点击「订阅」，选择转存目录和画质要求
+1. **创建订阅**：在作品详情页点击「订阅」，选择转存目录和画质要求；TMDB 剧集需先确认具体季数
 2. **自动检查**：系统按全局 Cron 定时检索所有频道（在追更任务之后执行）
 3. **自动执行**：
    - 电影 → 自动一次性转存到指定目录

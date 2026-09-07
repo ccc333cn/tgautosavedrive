@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.31">v0.0.31</a>
+    <a class="version-chip latest" href="#v0.0.32">v0.0.32</a>
+    <a class="version-chip" href="#v0.0.31">v0.0.31</a>
     <a class="version-chip" href="#v0.0.30">v0.0.30</a>
     <a class="version-chip" href="#v0.0.29">v0.0.29</a>
     <a class="version-chip" href="#v0.0.28">v0.0.28</a>
@@ -176,13 +177,36 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.32 -->
+    <article class="release" id="v0.0.32">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.32</span>
+        <span class="release-date">2026-09-08</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增</div>
+        <ul class="change-list">
+          <li>侧栏统一为「热门榜单」，保留豆瓣和 TMDB 两个独立页签，默认进入豆瓣；本版不开放 Netflix 榜单。</li>
+          <li>新增 TMDB 电影与剧集的今日趋势、本周趋势、热门、高分榜，展示中文资料和标准海报，支持详情、资源搜索、订阅及创建追更；剧集需确认季数。</li>
+          <li>TMDB 需在榜单页配置 API Read Access Token，凭据仅保存在服务端。列表/搜索缓存 1 小时、详情 24 小时，上游不可用时回退成功缓存。</li>
+        </ul>
+        <div class="section-title fix">体验优化</div>
+        <ul class="change-list">
+          <li>默认分批自动补齐前 50 部，第一批先展示；不足时展示全部，加载更多每次追加 20 部，按原序去重并保留跨页条目，避免漏项。</li>
+          <li>海报懒加载，标题与年份居中；切换分类重置分页并忽略旧请求，后续页失败保留已有内容并支持重试。</li>
+          <li>仅浏览榜单不会创建下载或触发扫库；保留已有任务、封面与配置，ED2K 归档成功后才联动的规则不变。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.31 -->
     <article class="release" id="v0.0.31">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.31</span>
         <span class="release-date">2026-09-07</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
