@@ -11,7 +11,7 @@
 
 **适用于 115 网盘和 123 云盘用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.32-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.33-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -42,6 +42,8 @@
 基于 **Cron** 的定时任务系统，支持电视剧持续追更、电影一次性转存。内置电影/综艺/动漫/电视剧/纪录片 5 种类型。按剧名/季自动创建文件夹结构，智能去重（分享码 + 集信息 + 文件名三重校验），超期无新资源自动完结。
 
 ### 🎯 智能解析
+
+v0.0.33 支持在程序自动创建的作品目录后追加明确的 TMDB ID，例如 `牢笼鬼魂 (2026) {tmdb-1393326}`，剧集季目录保持 `S01`。ID 来自任务已选资料或频道消息、ED2K 文件名；冲突资源不会盲目绑定，无 ID 保持原命名。任务标题、搜索关键词和视频文件名不变；旧任务已绑定目录、指定目录及普通 115 分享自带目录不会自动改名或迁移。
 
 内置消息解析逻辑，可提取剧名、年份、季集、画质、文件大小等元数据，并按画质排序保留候选资源。当前重点适配以下频道：
 
@@ -77,6 +79,7 @@
 - **SmartStrm**：转存后触发 Webhook，自动生成 STRM 文件。支持电影/综艺/动漫/电视剧/纪录片 5 种类型映射，每种类型可配置多个任务名（逗号分隔）
 - **Emby**：SmartStrm 通知后延时触发媒体库扫描，资源即存即看
 - **热门榜单**：豆瓣、TMDB 两个独立页签，默认豆瓣；TMDB 支持电影/剧集的今日趋势、本周趋势、热门和高分，自动展示前 50 部，可继续加载更多
+- **浏览位置保留**：从资源搜索或其他页面返回热门榜单时，恢复已选页签、筛选、列表与滚动位置；豆瓣和 TMDB 各自记忆，不增加返回按钮，刷新网页或关闭浏览器后不恢复。
 
 <div align="right">
 

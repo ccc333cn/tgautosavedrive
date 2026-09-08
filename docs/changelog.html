@@ -150,7 +150,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
   <p class="page-desc">TG追更助手 (TGAutoSaveDrive) 每个版本的新功能、修复和改进。</p>
 
   <nav class="version-nav">
-    <a class="version-chip latest" href="#v0.0.32">v0.0.32</a>
+    <a class="version-chip latest" href="#v0.0.33">v0.0.33</a>
+    <a class="version-chip" href="#v0.0.32">v0.0.32</a>
     <a class="version-chip" href="#v0.0.31">v0.0.31</a>
     <a class="version-chip" href="#v0.0.30">v0.0.30</a>
     <a class="version-chip" href="#v0.0.29">v0.0.29</a>
@@ -177,13 +178,31 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 
   <div class="timeline">
 
+    <!-- v0.0.33 -->
+    <article class="release" id="v0.0.33">
+      <div class="dot"></div>
+      <div class="release-header">
+        <span class="release-version">v0.0.33</span>
+        <span class="release-date">2026-09-09</span>
+        <span class="release-tag tag-latest">Latest</span>
+      </div>
+      <div class="release-body">
+        <div class="section-title feat">新增与优化</div>
+        <ul class="change-list">
+          <li>程序自动整理新建作品目录时，有明确 TMDB ID 就使用「名称 (年份) {tmdb-ID}」，季目录仍为 S01；任务标题、搜索关键词与视频文件名不变。</li>
+          <li>识别频道消息和 ED2K 文件名中的 TMDB 标识，过滤与任务 ID 不一致的资源，遇到多个冲突 ID 不盲目绑定；无 ID 保持原命名。</li>
+          <li>保留旧任务已绑定目录与指定目录，不迁移历史文件，不改名普通 115 分享自带目录；ED2K 仍须归档成功后才通知、更新时间标记与联动扫库。</li>
+          <li>从其他页面返回热门榜单时，恢复页签、筛选、已加载列表与浏览位置，豆瓣和 TMDB 分别记忆；刷新网页或关闭浏览器后不恢复。</li>
+        </ul>
+      </div>
+    </article>
+
     <!-- v0.0.32 -->
     <article class="release" id="v0.0.32">
       <div class="dot"></div>
       <div class="release-header">
         <span class="release-version">v0.0.32</span>
         <span class="release-date">2026-09-08</span>
-        <span class="release-tag tag-latest">Latest</span>
       </div>
       <div class="release-body">
         <div class="section-title feat">新增</div>
