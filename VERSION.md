@@ -1,13 +1,19 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.33`
+当前版本：`v0.0.34`
 
-发布日期：2026-09-09
+发布日期：2026-09-18
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.33`
+- `ccc333i/tgautosavedrive:v0.0.34`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.34 — 2026-09-18
+
+- 新增自动归档功能，仅适配 **115 网盘 · 剧迷115会员派送与订阅资源**。
 
 ---
 
