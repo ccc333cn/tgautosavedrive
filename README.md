@@ -11,7 +11,7 @@
 
 **适用于 115 网盘和 123 云盘用户**
 
-[![version](https://img.shields.io/badge/version-v0.0.35-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
+[![version](https://img.shields.io/badge/version-v0.0.36-blue?style=flat-square)](./VERSION.md) [![docker-pulls](https://img.shields.io/docker/pulls/ccc333i/tgautosavedrive?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive) [![multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-2496ED?logo=docker&logoColor=white&style=flat-square)](https://hub.docker.com/r/ccc333i/tgautosavedrive/tags) [![Go](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white&style=flat-square)](#技术栈) [![License](https://img.shields.io/badge/License-Free-green?style=flat-square)](#许可说明) [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white&style=flat-square)](https://t.me/tgautosavedrive)
 
 </div>
 
@@ -48,6 +48,8 @@ v0.0.34 新增自动归档功能，仅适配 **115 网盘 · 剧迷115会员派�
 ### 今日入库
 
 v0.0.35 新增「今日入库」，汇总追更与自动归档的成功记录，支持封面列表、海报卡片、日期与分类筛选、季集及文件详情。配置 TMDB 后可补充中文名、海报、播出平台和本季总集数，复用本地缓存，不增加网盘扫描。
+
+v0.0.36 新增入库容量统计，汇总筛选范围内已知文件大小；优化手机海报比例、长内容省略和平台自适应展示，顶部保留四张统计卡片。
 
 记录从升级后开始累计，不回扫历史文件；重复跳过、重复清理及失败不计新增。未获取文件明细的分享资源单独标注，不计作视频文件；入库历史不等于当前网盘库存或 Emby 已刮削。
 
