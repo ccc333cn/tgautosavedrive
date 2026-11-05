@@ -1,13 +1,19 @@
 # TGAutoSaveDrive 版本记录
 
-当前版本：`v0.0.37`
+当前版本：`v0.0.38`
 
-发布日期：2026-09-26
+发布日期：2026-11-06
 
 ## Docker 镜像
 
-- `ccc333i/tgautosavedrive:v0.0.37`
+- `ccc333i/tgautosavedrive:v0.0.38`
 - `ccc333i/tgautosavedrive:latest`
+
+---
+
+## v0.0.38 — 2026-11-06
+
+- 今日入库明细新增导演与演员信息，支持展开长名单及手机端显示；复用 TMDB 缓存，不增加网盘访问。
 
 ---
 
